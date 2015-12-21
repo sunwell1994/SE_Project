@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2"
+    xmlns:tools="http://schemas.android.com/tools" tools:ignore="TypographyDashes">
+
+    <string name="action_settings">设置</string>
+    <string name="action_map">地图</string>
+    <string name="menu_sort_by">排序</string>
+    <string name="sort_order_entry_az">A 到 Z</string>
+    <string name="sort_order_entry_za">Z 到 A</string>
+    <string name="sort_order_entry_artist">分享者</string>
+    <string name="sort_order_entry_album">导游单</string>
+    <string name="sort_order_entry_year">年份</string>
+    <string name="sort_order_entry_track_number">导游编号</string>
+    <string name="sort_order_entry_duration">时长</string>
+    <string name="sort_order_entry_date_added">添加时间</string>
+    <string name="sort_order_entry_track_list">导游列表</string>
+    <string name="sort_order_entry_number_of_songs">导游数量</string>
+    <string name="sort_order_entry_number_of_albums">导游单数量</string>
+    <string name="sort_order_entry_filename">文件名</string>
+
+    <string name="error_playing_track">播放曲目错误</string>
+
+    <string name="playlist_last_added">最新添加</string>
+    <string name="playlist_recently_played">交大拖鞋门至包图线路</string>
+    <string name="playlist_top_tracks">我的最佳导游</string>
+
+    <string name="timber_source">报告任何 bug，在<u> 这里 </u>。</string>
+    <string name="timber_feature_request">提出任何特性请求通过 Google+ 社区，在 <u> 这里 </u>。</string>
+
+    <string name="menu_show_as">视图</string>
+    <string name="menu_show_as_entry_list">列表</string>
+    <string name="menu_show_as_entry_grid">网格</string>
+
+    <string name="light">默认主题</string>
+    <string name="dark">似水年华</string>
+    <string name="black">黑胶唱片</string>
+
+    <string name="last_opened">上次打开</string>
+
+    <string name="songs">导游</string>
+    <string name="albums">导游单</string>
+    <string name="artists">分享者</string>
+    <string name="library">库</string>
+    <string name="playlists">播放列表</string>
+    <string name="playing_queue">播放队列</string>
+    <string name="now_playing">正在播放</string>
+    <string name="settings">设置</string>
+    <string name="about">关于</string>
+    <string name="help_and_feedback">帮助与反馈</string>
+    <string name="search">搜索</string>
+    <string name="action_shuffle_all">随机</string>
+    <string name="action_equalizer">均衡</string>
+    <string name="search_library">在库中搜索</string>
+    <string name="count_song"><xliff:g id="count">%d</xliff:g> 首导游</string>
+    <string name="count_songs"><xliff:g id="count">%d</xliff:g> 首导游</string>
+    <string name="count_album"><xliff:g id="count">%d</xliff:g> 张导游单</string>
+    <string name="count_albums"><xliff:g id="count">%d</xliff:g> 张导游单</string>
+    <string name="count_artist"><xliff:g id="count">%d</xliff:g> 位分享者</string>
+    <string name="count_artists"><xliff:g id="count">%d</xliff:g> 位分享者</string>
+    <string name="select_theme">选择主题</string>
+    <string name="choose_theme_throughout">选择一个主题，在整个应用中。</string>
+    <string name="choose_start_page">选择起始页，在启动时显示。</string>
+    <string name="start_page">起始页</string>
+    <string name="artist_in_grid">分享者网格显示</string>
+    <string name="toggle_artists_grid">切换分享者显示，在 2×2 的网格中。</string>
+    <string name="toggle_system_animations">切换系统动画，在整个应用中。</string>
+    <string name="system_animations">系统动画</string>
+    <string name="toggle_animations">切换过渡动画，在整个应用中。</string>
+    <string name="animations">动画</string>
+    <string name="now_playing_selector">选择正在播放画面，从4个不同风格中。</string>
+    <string name="personalisation">个性化</string>
+    <string name="other">其他</string>
+    <string name="timber_about_opensource">ShareWay 是一个开源多媒体导游软件，由PineApple在开源播放器Timber基础上开发。</string>
+    <string name="summary_pause_detach">切换为暂停播放，当耳机被拔出时。</string>
+    <string name="pause_detach">拔出暂停</string>
+    <string name="currently_selected">当前选择</string>
+
+    <string name="login_username_hint">用户名</string>
+    <string name="login_pwd_hint">请输入密码</string>
+    <string name="rem_pwd">记住我？</string>
+    <string name="forget_pwd">忘记密码？</string>
+    <string name="register">注册新用户</string>
+    <string name="login_label_signin">登陆</string>
+    <string name="passwd_error">密码与用户名不匹配</string>
+    <string name="account_text">账号</string>
+    <string name="account_hint">输入你要申请的账号</string>
+    <string name="passwd">密码</string>
+    <string name="passwd_hint">请输入密码（6到15个字符）</string>
+    <string name="confirm_pwd">确认密码</string>
+    <string name="confirmpwd_hint">请再次输入密码</string>
+    <string name="nickname">昵称</string>
+    <string name="nickname_hint">请输入昵称（可以更改）</string>
+    <string name="phone">手机号码</string>
+    <string name="phone_hint">请输入手机号码</string>
+    <string name="gender">性别</string>
+    <string name="male">男</string>
+    <string name="female">女</string>
+    <string name="checkcode">验证码</string>
+    <string name="checkcode_hint">请输入验证码</string>
+    <string name="get_checkcode">获取验证码</string>
+    <string name="register_title">注册</string>
+    <string name="passwd_length">密码为6到15个字符</string>
+    <string name="passwd_identical">两次输入不同</string>
+    <string name="phone_length">请输入正确的手机号</string>
+    <string name="account_duplication">已经存在该用户名，请重新输入</string>
+
+    <string-array name="user_photos">
+        <item>http://scontent-a-fra.cdninstagram.com/hphotos-xpf1/t51.2885-15/s306x306/e15/10665483_429615813855717_1490926670_n.jpg
+        </item>
+        <item>http://scontent-b-fra.cdninstagram.com/hphotos-xaf1/t51.2885-15/s306x306/e15/10891026_694434897342602_1094773634_n.jpg
+        </item>
+        <item>http://scontent-a-fra.cdninstagram.com/hphotos-xaf1/t51.2885-15/s306x306/e15/10894920_1382218332084671_10354293_n.jpg
+        </item>
+        <item>http://scontent-b-fra.cdninstagram.com/hphotos-xfa1/t51.2885-15/s306x306/e15/10895429_768163716566132_692639371_n.jpg
+        </item>
+        <item>http://scontent-b-fra.cdninstagram.com/hphotos-xaf1/t51.2885-15/s306x306/e15/10899087_405295322969722_20422376_n.jpg</item>
+        <item>http://scontent-a-fra.cdninstagram.com/hphotos-xaf1/t51.2885-15/s306x306/e15/10899123_922231267802027_1123900984_n.jpg</item>
+        <item>http://scontent-a-fra.cdninstagram.com/hphotos-xfa1/t51.2885-15/s306x306/e15/10903214_589111004559561_1485881959_n.jpg</item>
+        <item>http://scontent-a-fra.cdninstagram.com/hphotos-xfa1/t51.2885-15/s306x306/e15/10914479_770066599745785_704061869_n.jpg</item>
+        <item>http://scontent-a-fra.cdninstagram.com/hphotos-xfa1/t51.2885-15/s306x306/e15/10914587_1580079332227764_829762970_n.jpg</item>
+        <item>http://scontent-b-fra.cdninstagram.com/hphotos-xfa1/t51.2885-15/s306x306/e15/10919231_605000369644967_1578007175_n.jpg</item>
+        <item>http://scontent-b-fra.cdninstagram.com/hphotos-xaf1/t51.2885-15/s306x306/e15/10932142_330866587116424_1327271556_n.jpg</item>
+        <item>http://scontent-b-fra.cdninstagram.com/hphotos-xfa1/t51.2885-15/s306x306/e15/10932410_1544715455813452_1107632347_n.jpg</item>
+        <item>http://scontent-a-fra.cdninstagram.com/hphotos-xfp1/t51.2885-15/s306x306/e15/891516_579817258815508_1989379587_n.jpg</item>
+        <item>http://scontent-b-fra.cdninstagram.com/hphotos-xaf1/t51.2885-15/s306x306/e15/1922172_719849754801056_911351010_n.jpg</item>
+        <item>http://scontent-b-fra.cdninstagram.com/hphotos-xaf1/t51.2885-15/s306x306/e15/10914370_1519297625009641_722250486_n.jpg</item>
+        <item>http://scontent-a-fra.cdninstagram.com/hphotos-xaf1/t51.2885-15/s306x306/e15/10903746_368501953321344_2002746420_n.jpg</item>
+        <item>http://scontent-b-fra.cdninstagram.com/hphotos-xaf1/t51.2885-15/s306x306/e15/10903270_1397263717236338_950192395_n.jpg</item>
+        <item>http://scontent-a-fra.cdninstagram.com/hphotos-xaf1/t51.2885-15/s306x306/e15/10903242_441936642627221_576882729_n.jpg</item>
+        <item>http://scontent-a-fra.cdninstagram.com/hphotos-xaf1/t51.2885-15/s306x306/e15/10899295_796858437028648_664655000_n.jpg</item>
+        <item>http://scontent-b-fra.cdninstagram.com/hphotos-xaf1/t51.2885-15/s306x306/e15/10899139_948470841831743_1406659049_n.jpg</item>
+        <item>http://scontent-a-fra.cdninstagram.com/hphotos-xaf1/t51.2885-15/s306x306/e15/10899123_922231267802027_1123900984_n.jpg</item>
+        <item>http://scontent-b-fra.cdninstagram.com/hphotos-xaf1/t51.2885-15/s306x306/e15/10899087_405295322969722_20422376_n.jpg</item>
+    </string-array>
+
+    <string name="user_profile_photo">http://igcdn-photos-f-a.akamaihd.net/hphotos-ak-xpa1/t51.2885-19/929118_455075441302693_1605108410_a.jpg</string>
+
+</resources>
