@@ -190,10 +190,10 @@ public class AlbumFragment extends Fragment {
                 mPreferences.setAlbumSortOrder(SortOrder.AlbumSortOrder.ALBUM_ARTIST);
                 reloadAdapter();
                 return true;
-//            case R.id.menu_sort_by_number_of_songs:
-//                mPreferences.setAlbumSortOrder(SortOrder.AlbumSortOrder.ALBUM_NUMBER_OF_SONGS);
-//                reloadAdapter();
-//                return true;
+            case R.id.menu_sort_by_number_of_songs:
+                mPreferences.setAlbumSortOrder(SortOrder.AlbumSortOrder.ALBUM_NUMBER_OF_SONGS);
+                reloadAdapter();
+                return true;
             case R.id.menu_show_as_list:
                 mPreferences.setAlbumsInGrid(false);
                 updateLayoutManager(1);

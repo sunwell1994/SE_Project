@@ -75,7 +75,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ItemHolder> 
         Album localItem = arraylist.get(i);
 
         itemHolder.title.setText(localItem.title);
-        //itemHolder.artist.setText(localItem.artistName);
+        itemHolder.artist.setText(localItem.artistName);
 
         ImageLoader.getInstance().displayImage(TimberUtils.getAlbumArtUri(localItem.id).toString(), itemHolder.albumArt,
                 new DisplayImageOptions.Builder().cacheInMemory(true)

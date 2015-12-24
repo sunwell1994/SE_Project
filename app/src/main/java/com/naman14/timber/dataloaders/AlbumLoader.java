@@ -19,6 +19,7 @@ import android.database.Cursor;
 import android.provider.MediaStore;
 
 import com.naman14.timber.models.Album;
+import com.naman14.timber.utils.PreferencesUtility;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,22 +31,36 @@ public class AlbumLoader {
         Album album = new Album();
         if (cursor != null) {
             if (cursor.moveToFirst())
-                album = new Album(cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
-//                album = new Album(cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getLong(3), cursor.getInt(4), cursor.getInt(5));
+              album = new Album(cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getLong(3), cursor.getInt(4), cursor.getInt(5));
         }
         if (cursor != null)
             cursor.close();
         return album;
     }
 
+    public static String deal(String sl){
+        StringBuffer sb = new StringBuffer(sl);
+        StringBuffer se = new StringBuffer();
+        int l=sb.lastIndexOf("_");
+        int m=sb.length();
+        char c;
+        for(int i=l+1;i<m;i++){
+            c=sb.charAt(i);
+            se.append(c);
+        }
+        return new String(se);
+    }
 
     public static List<Album> getAlbumsForCursor(Cursor cursor) {
         ArrayList arrayList = new ArrayList();
+        String albumName = null;
+        String albumCut = null;
         if ((cursor != null) && (cursor.moveToFirst()))
             do {
-                arrayList.add(new Album(cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getString(3)));
-
-//                arrayList.add(new Album(cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getLong(3), cursor.getInt(4), cursor.getInt(5)));
+                albumName = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Albums.ALBUM));
+                albumCut = deal(albumName);
+                if(albumCut.equals("shareway")){
+                    arrayList.add(new Album(cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getLong(3), cursor.getInt(4), cursor.getInt(5)));}
             }
             while (cursor.moveToNext());
         if (cursor != null)
@@ -67,11 +82,9 @@ public class AlbumLoader {
 
 
     public static Cursor makeAlbumCursor(Context context, String selection, String[] paramArrayOfString) {
-//        final String albumSortOrder = PreferencesUtility.getInstance(context).getAlbumSortOrder();
-//        Cursor cursor = context.getContentResolver().query(MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI, new String[]{"_id", "album", "artist", "artist_id", "numsongs", "minyear"}, selection, paramArrayOfString, albumSortOrder);
-        Cursor cursor = context.getContentResolver().query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                new String[]{MediaStore.Images.Media._ID, MediaStore.Images.Media.TITLE,MediaStore.Images.Media.DISPLAY_NAME, MediaStore.Images.Media.DATA},
-                selection, paramArrayOfString, null);
+        final String albumSortOrder = PreferencesUtility.getInstance(context).getAlbumSortOrder();
+        Cursor cursor = context.getContentResolver().query(MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI, new String[]{"_id", "album", "artist", "artist_id", "numsongs", "minyear"}, selection, paramArrayOfString, albumSortOrder);
+
         return cursor;
     }
 }

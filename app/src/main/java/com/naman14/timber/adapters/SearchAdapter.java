@@ -97,7 +97,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ItemHolder
             case 1:
                 Album album = (Album) searchResults.get(i);
                 itemHolder.albumtitle.setText(album.title);
-                //itemHolder.albumartist.setText(album.artistName);
+                itemHolder.albumartist.setText(album.artistName);
                 ImageLoader.getInstance().displayImage(TimberUtils.getAlbumArtUri(album.id).toString(), itemHolder.albumArt,
                         new DisplayImageOptions.Builder().cacheInMemory(true)
                                 .cacheOnDisk(true)

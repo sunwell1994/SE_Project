@@ -31,18 +31,24 @@ public class SongLoader {
 
     public static ArrayList<Song> getSongsForCursor(Cursor cursor) {
         ArrayList arrayList = new ArrayList();
+        String absolute_path;
+        String display_name;
+        //这里要根据具体手机的实际路径情况
+        String folder_path = "/storage/emulated/0/Android/data/naman14.timber/files/";
         if ((cursor != null) && (cursor.moveToFirst()))
             do {
-                long id = cursor.getLong(0);
-                String title = cursor.getString(1);
-                String artist = cursor.getString(2);
-                String album = cursor.getString(3);
-                int duration = cursor.getInt(4);
-                int trackNumber = cursor.getInt(5);
-                long artistId = cursor.getInt(6);
-                long albumId = cursor.getLong(7);
-
-                arrayList.add(new Song(id, albumId, artistId, title, artist, album, duration, trackNumber));
+                absolute_path = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA));
+                display_name = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DISPLAY_NAME));
+                if( absolute_path.equals(folder_path + display_name)){
+                    long id = cursor.getLong(0);
+                    String title = cursor.getString(1);
+                    String artist = cursor.getString(2);
+                    String album = cursor.getString(3);
+                    int duration = cursor.getInt(4);
+                    int trackNumber = cursor.getInt(5);
+                    long artistId = cursor.getInt(6);
+                    long albumId = cursor.getLong(7);
+                    arrayList.add(new Song(id, albumId, artistId, title, artist, album, duration, trackNumber));}
             }
             while (cursor.moveToNext());
         if (cursor != null)
@@ -105,14 +111,17 @@ public class SongLoader {
     }
 
 
-    public static Cursor makeSongCursor(Context context, String selection, String[] paramArrayOfString) {
-        String selectionStatement = "is_music=1 AND title != ''";
-        final String songSortOrder = PreferencesUtility.getInstance(context).getSongSortOrder();
 
-        if (!TextUtils.isEmpty(selection)) {
-            selectionStatement = selectionStatement + " AND " + selection;
-        }
-        Cursor cursor = context.getContentResolver().query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI, new String[]{"_id", "title", "artist", "album", "duration", "track", "artist_id", "album_id"}, selectionStatement, paramArrayOfString, songSortOrder);
+    public static Cursor makeSongCursor(Context context, String selection, String[] paramArrayOfString) {
+        //String selectionStatement = "is_music=1 AND title != ''";
+        final String songSortOrder = PreferencesUtility.getInstance(context).getSongSortOrder();
+        //if (!TextUtils.isEmpty(selection)) {
+        //selectionStatement = selectionStatement + " AND " + where;
+        //}
+        Cursor cursor = context.getContentResolver().query(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
+                new String[]{"_id", "title", "artist", "album", "duration", "track", "artist_id", "album_id",
+                        MediaStore.Audio.Media.DATA,MediaStore.Audio.Media.DISPLAY_NAME},
+                null, null, songSortOrder);
 
         return cursor;
     }
