@@ -58,8 +58,8 @@ public class ArtistAlbumAdapter extends RecyclerView.Adapter<ArtistAlbumAdapter.
         Album localItem = arraylist.get(i);
 
         itemHolder.title.setText(localItem.title);
-//        String songCount = TimberUtils.makeLabel(mContext, R.plurals.Nsongs, localItem.songCount);
-//        itemHolder.details.setText(songCount);
+        String songCount = TimberUtils.makeLabel(mContext, R.plurals.Nsongs, localItem.songCount);
+        itemHolder.details.setText(songCount);
 
         ImageLoader.getInstance().displayImage(TimberUtils.getAlbumArtUri(localItem.id).toString(), itemHolder.albumArt,
                 new DisplayImageOptions.Builder().cacheInMemory(true)

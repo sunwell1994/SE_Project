@@ -37,11 +37,29 @@ public class ArtistLoader {
         return artist;
     }
 
+    public static String deal(String sl){
+        StringBuffer sb = new StringBuffer(sl);
+        StringBuffer se = new StringBuffer();
+        int l=sb.lastIndexOf("_");
+        int m=sb.length();
+        char c;
+        for(int i=l+1;i<m;i++){
+            c=sb.charAt(i);
+            se.append(c);
+        }
+        return new String(se);
+    }
+
     public static List<Artist> getArtistsForCursor(Cursor cursor) {
         ArrayList arrayList = new ArrayList();
+        String artistName = null;
+        String artistCut = null;
         if ((cursor != null) && (cursor.moveToFirst()))
             do {
-                arrayList.add(new Artist(cursor.getLong(0), cursor.getString(1), cursor.getInt(2), cursor.getInt(3)));
+                artistName = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Artists.ARTIST));
+                artistCut = deal(artistName);
+                if(artistCut.equals("shareway"))
+                    arrayList.add(new Artist(cursor.getLong(0), cursor.getString(1), cursor.getInt(2), cursor.getInt(3)));
             }
             while (cursor.moveToNext());
         if (cursor != null)
