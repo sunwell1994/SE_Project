@@ -121,11 +121,14 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/upload"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="16"
                                 android:textColor="#ffffff"
-                                android:textSize="20sp" />
+                                android:textSize="24sp"
+                                android:onClick="onClick"
+                                android:clickable="true"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -143,13 +146,16 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/download"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="36"
                                 android:textColor="#ffffff"
-                                android:textSize="20sp" />
+                                android:textSize="24sp"
+                                android:clickable="true"/>
 
                             <TextView
+
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="下载"
@@ -165,11 +171,13 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/followers"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="39"
                                 android:textColor="#ffffff"
-                                android:textSize="20sp" />
+                                android:textSize="24sp"
+                                android:clickable="true"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -187,11 +195,13 @@
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/follow"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="85"
                                 android:textColor="#ffffff"
-                                android:textSize="20sp" />
+                                android:textSize="24sp"
+                                android:clickable="true"/>
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -214,20 +224,13 @@
                     app:layout_scrollFlags="scroll|enterAlways"
                     app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-                    <ImageView
-                        android:id="@+id/ivLogo"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:scaleType="center"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ShareWay"
+                        android:text="HomePage"
                         android:textColor="#ffffff"
-                        android:textSize="12sp" />
-                        <!--android:src="@drawable/img_toolbar_logo" />-->
+                        android:textSize="21sp" />
                 </android.support.v7.widget.Toolbar>
 
             </android.support.design.widget.CollapsingToolbarLayout>

@@ -61,6 +61,7 @@ import java.util.Map;
 
 import butterknife.BindDimen;
 import butterknife.BindString;
+import cn.bmob.v3.Bmob;
 
 public class MainActivity extends BaseActivity {
 
@@ -97,13 +98,17 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
+        // 初始化 Bmob SDK
+        // 使用时请将第二个参数Application ID替换成你在Bmob服务器端创建的Application ID
+        Bmob.initialize(this, "89ede6b8f4ccbc623027a8e08d754797");
+
         sMainActivity = this;
         action = getIntent().getAction();
 
         isLightTheme = PreferencesUtility.getInstance(this).getTheme().equals("light");
         isDarkTheme = PreferencesUtility.getInstance(this).getTheme().equals("dark");
 
-        if (action.equals(Constants.NAVIGATE_ALBUM) || action.equals(Constants.NAVIGATE_ARTIST) || action.equals(Constants.NAVIGATE_NOWPLAYING)||action.equals(Constants.NAVIGATE_USERPROFILE)) {
+        if (action.equals(Constants.NAVIGATE_ALBUM) || action.equals(Constants.NAVIGATE_ARTIST) || action.equals(Constants.NAVIGATE_NOWPLAYING)) {
             isNavigatingMain = false;
         } else {
             isNavigatingMain = true;
@@ -116,14 +121,16 @@ public class MainActivity extends BaseActivity {
             else setTheme(R.style.AppTheme_FullScreen_Black);
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main_fullscreen);
-        } else {
-            if (isLightTheme)
-                setTheme(R.style.AppThemeLight);
-            else if (isDarkTheme) setTheme(R.style.AppThemeDark);
-            else setTheme(R.style.AppThemeBlack);
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_main);
+        } else
+        {
+                if (isLightTheme)
+                    setTheme(R.style.AppThemeLight);
+                else if (isDarkTheme) setTheme(R.style.AppThemeDark);
+                else setTheme(R.style.AppThemeBlack);
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.activity_main);
         }
+
 
 
       //  navigationMap.put(Constants.NAVIGATE_USERPROFILE, navigateUserprofile);
@@ -139,8 +146,9 @@ public class MainActivity extends BaseActivity {
         panelLayout = (SlidingUpPanelLayout) findViewById(R.id.sliding_layout);
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
-        View header = navigationView.inflateHeaderView(R.layout.nav_header);
-
+       View header= navigationView.inflateHeaderView(R.layout.nav_header);
+//        View header = navigationView.getHeaderView(0);
+    //    navigationView.getHeaderCount();
         ivMenuUserProfilePhoto=(ImageView) header.findViewById(R.id.ivMenuUserProfilePhoto);
         header.findViewById(R.id.vGlobalMenuHeader).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,16 +156,15 @@ public class MainActivity extends BaseActivity {
                 onGlobalMenuHeaderClick(v);
             }
         });
+//        navigationView.addHeaderView(ivMenuUserProfilePhoto);
 
-
-       /* Picasso.with(this)
+        Picasso.with(this)
                 .load(profilePhoto)
                 .placeholder(R.drawable.img_circle_placeholder)
-//                .resize(avatarSize,avatarSize)
-                .resize(64000,64000)
+                .resize(avatarSize, avatarSize)
                 .centerCrop()
                 .transform(new CircleTransformation())
-                .into(ivMenuUserProfilePhoto);*/
+                .into(ivMenuUserProfilePhoto);
 
         albumart = (ImageView) header.findViewById(R.id.album_art);
         songtitle = (TextView) header.findViewById(R.id.song_title);
@@ -267,8 +274,8 @@ public class MainActivity extends BaseActivity {
                 NavigationUtils.navigateToSearch(this);
                 return true;
             case R.id.action_equalizer:
-                //NavigationUtils.navigateToEqualizer(this);
-                NavigationUtils.navigateToUserprofile(this);
+                NavigationUtils.navigateToEqualizer(this);
+//                NavigationUtils.navigateToUserprofile(this);
                 return true;
             case R.id.action_map:
                 NavigationUtils.navigateToMap(this);
@@ -353,6 +360,8 @@ public class MainActivity extends BaseActivity {
             case R.id.nav_settings:
                 NavigationUtils.navigateToSettings(MainActivity.this);
                 break;
+
+
             case R.id.nav_help:
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 Uri data = Uri.parse("mailto:divinerage1994@gmail.com");
@@ -404,14 +413,6 @@ public class MainActivity extends BaseActivity {
                         .resetViewBeforeLoading(true)
                         .build());
 
-        Picasso.with(this)
-                .load(profilePhoto)
-                .placeholder(R.drawable.img_circle_placeholder)
-//                .resize(avatarSize,avatarSize)
-                .resize(64000, 64000)
-                .centerCrop()
-                .transform(new CircleTransformation())
-                .into(ivMenuUserProfilePhoto);
     }
 
     @Override

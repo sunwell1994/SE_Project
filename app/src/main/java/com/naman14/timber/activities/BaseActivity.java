@@ -38,6 +38,7 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import butterknife.Bind;
+import butterknife.ButterKnife;
 
 import static com.naman14.timber.MusicPlayer.mService;
 
@@ -80,6 +81,16 @@ public class BaseActivity extends AppCompatActivity implements ServiceConnection
 
         registerReceiver(mPlaybackStatus, filter);
 
+    }
+
+    @Override
+    public void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+        bindViews();
+    }
+
+    public void setContentViewWithoutInject(int layoutResId) {
+        super.setContentView(layoutResId);
     }
 
     @Override
@@ -171,10 +182,15 @@ public class BaseActivity extends AppCompatActivity implements ServiceConnection
         }
     }
 
+    protected void bindViews() {
+        ButterKnife.bind(this);
+        setupToolbar();
+    }
+
     protected void setupToolbar() {
         if (toolbar != null) {
             setSupportActionBar(toolbar);
-            toolbar.setNavigationIcon(R.drawable.ic_menu);
+            toolbar.setNavigationIcon(R.drawable.ic_back);
         }
     }
 

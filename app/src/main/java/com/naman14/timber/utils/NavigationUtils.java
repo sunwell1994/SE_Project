@@ -140,7 +140,6 @@ public class NavigationUtils {
     public static void navigateToUserprofile(Context context) {
         Intent intent = new Intent(context, UserProfileActivity.class);
         intent.setAction(Constants.NAVIGATE_Userprofile);
-
         context.startActivity(intent);
     }
 
