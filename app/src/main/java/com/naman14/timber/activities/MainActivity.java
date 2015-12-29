@@ -98,9 +98,7 @@ public class MainActivity extends BaseActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
-        // 初始化 Bmob SDK
-        // 使用时请将第二个参数Application ID替换成你在Bmob服务器端创建的Application ID
-        Bmob.initialize(this, "89ede6b8f4ccbc623027a8e08d754797");
+
 
         sMainActivity = this;
         action = getIntent().getAction();
@@ -318,6 +316,7 @@ public class MainActivity extends BaseActivity {
             navigationView.getMenu().findItem(R.id.nav_queue).setIcon(R.drawable.music_note);
             navigationView.getMenu().findItem(R.id.nav_nowplaying).setIcon(R.drawable.bookmark_music);
             navigationView.getMenu().findItem(R.id.nav_settings).setIcon(R.drawable.settings);
+            navigationView.getMenu().findItem(R.id.nav_logout).setIcon(R.drawable.logout);
             navigationView.getMenu().findItem(R.id.nav_help).setIcon(R.drawable.help_circle);
             navigationView.getMenu().findItem(R.id.nav_about).setIcon(R.drawable.information);
         } else {
@@ -326,6 +325,7 @@ public class MainActivity extends BaseActivity {
             navigationView.getMenu().findItem(R.id.nav_queue).setIcon(R.drawable.music_note_white);
             navigationView.getMenu().findItem(R.id.nav_nowplaying).setIcon(R.drawable.bookmark_music_white);
             navigationView.getMenu().findItem(R.id.nav_settings).setIcon(R.drawable.settings_white);
+            navigationView.getMenu().findItem(R.id.nav_logout).setIcon(R.drawable.logout_white);
             navigationView.getMenu().findItem(R.id.nav_help).setIcon(R.drawable.help_circle_white);
             navigationView.getMenu().findItem(R.id.nav_about).setIcon(R.drawable.information_white);
         }
@@ -359,6 +359,10 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.nav_settings:
                 NavigationUtils.navigateToSettings(MainActivity.this);
+                break;
+
+            case R.id.nav_logout:
+                NavigationUtils.navigateToLogout(MainActivity.this);
                 break;
 
 

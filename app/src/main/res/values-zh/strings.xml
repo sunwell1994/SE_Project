@@ -45,6 +45,7 @@
     <string name="playing_queue">播放队列</string>
     <string name="now_playing">正在播放</string>
     <string name="settings">设置</string>
+    <string name="logout">退出</string>
     <string name="about">关于</string>
     <string name="help_and_feedback">帮助与反馈</string>
     <string name="search">搜索</string>
@@ -91,7 +92,9 @@
     <string name="nickname">昵称</string>
     <string name="nickname_hint">请输入昵称（可以更改）</string>
     <string name="phone">手机号码</string>
-    <string name="phone_hint">请输入手机号码</string>
+    <string name="phone_hint">请输入手机号码</string>'
+    <string name="email">邮箱地址</string>
+    <string name="email_hint">请输入邮箱地址</string>
     <string name="gender">性别</string>
     <string name="male">男</string>
     <string name="female">女</string>
@@ -103,6 +106,8 @@
     <string name="passwd_identical">两次输入不同</string>
     <string name="phone_length">请输入正确的手机号</string>
     <string name="account_duplication">已经存在该用户名，请重新输入</string>
+    <string name="register_success">注册成功！</string>
+    <string name="register_fail">注册失败...</string>
 
     <string-array name="user_photos">
         <item>http://scontent-a-fra.cdninstagram.com/hphotos-xpf1/t51.2885-15/s306x306/e15/10665483_429615813855717_1490926670_n.jpg
