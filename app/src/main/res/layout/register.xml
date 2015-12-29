@@ -215,17 +215,17 @@
                     android:layout_width="fill_parent"
                     android:layout_height="1dp"
                     android:background="@drawable/prefresh_list_cutline"
-                    android:visibility="gone"/>
+                    />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="gone"
+
                     android:layout_margin="10dp">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="邮        箱："
+                        android:text="@string/email"
                         android:textSize="19sp"
                         android:textColor="#000000"/>
 
@@ -233,7 +233,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
-                        android:hint="Email"
+                        android:hint="@string/email_hint"
                         android:inputType="textEmailAddress"
                         android:background="@null"
                         android:singleLine="true"

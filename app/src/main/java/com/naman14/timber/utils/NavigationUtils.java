@@ -39,6 +39,8 @@ import com.naman14.timber.nowplaying.Timber4;
 
 import java.util.ArrayList;
 
+import cn.bmob.v3.BmobUser;
+
 public class NavigationUtils {
 
     @TargetApi(21)
@@ -102,6 +104,15 @@ public class NavigationUtils {
         intent.setAction(Constants.NAVIGATE_SETTINGS);
         context.startActivity(intent);
     }
+
+    /*添加登出的转移*/
+    public static  void navigateToLogout(Activity context){
+        final  Intent intent = new Intent(context,LoginActivity.class);
+        BmobUser.logOut(context);   //清除缓存用户对象
+        BmobUser currentUser = BmobUser.getCurrentUser(context); // 现在的currentUser是null了
+        context.startActivity(intent);
+    }
+
 
     public static void navigateToSearch(Activity context) {
         final Intent intent = new Intent(context, SearchActivity.class);

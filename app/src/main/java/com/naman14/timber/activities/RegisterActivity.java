@@ -2,6 +2,7 @@ package com.naman14.timber.activities;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.View;
 import android.view.Window;
@@ -14,8 +15,16 @@ import android.widget.Toast;
 
 import com.naman14.timber.Data;
 import com.naman14.timber.R;
+import com.naman14.timber.bean.MyUser;
 import com.naman14.timber.utils.ClassPathResource;
 import com.naman14.timber.utils.NavigationUtils;
+
+import cn.bmob.v3.BmobSMS;
+import cn.bmob.v3.BmobUser;
+import cn.bmob.v3.exception.BmobException;
+import cn.bmob.v3.listener.RequestSMSCodeListener;
+import cn.bmob.v3.listener.SaveListener;
+import cn.bmob.v3.listener.VerifySMSCodeListener;
 
 /**
  * Created by admin on 2015/12/17.
@@ -35,7 +44,9 @@ public class RegisterActivity extends Activity implements View.OnClickListener{
     private String pwdVal;
     private String pwdConfirmVal;
     private String phoneVal;
-    private String genderVal;
+    private String checkCodeVal;
+    private Boolean genderVal;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -78,29 +89,29 @@ public class RegisterActivity extends Activity implements View.OnClickListener{
         pwdConfirm_edit = (EditText)findViewById(R.id.pwdConfirm_edit);
 
 
-        et_accountNo.setOnFocusChangeListener(new View.OnFocusChangeListener(){
-
-            @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                // TODO Auto-generated method stub
-                accountVal =et_accountNo.getText().toString();
-                if (!hasFocus) {
-                    boolean flag=false;
-
-                    for (int i =0; i< Data.getLength();i++)
-                    {
-                        if (accountVal.equals(Data.getUsername(i))){
-                            flag =true;
-                            break;
-                        }
-                    }
-
-                    if (flag)
-                        Toast.makeText(getApplication(), R.string.account_duplication, Toast.LENGTH_SHORT).show();
-                }
-            }
-
-        });
+//        et_accountNo.setOnFocusChangeListener(new View.OnFocusChangeListener(){
+//
+//            @Override
+//            public void onFocusChange(View view, boolean hasFocus) {
+//                // TODO Auto-generated method stub
+//                accountVal =et_accountNo.getText().toString();
+//                if (!hasFocus) {
+//                    boolean flag=false;
+//
+//                    for (int i =0; i< Data.getLength();i++)
+//                    {
+//                        if (accountVal.equals(Data.getUsername(i))){
+//                            flag =true;
+//                            break;
+//                        }
+//                    }
+//
+//                    if (flag)
+//                        Toast.makeText(getApplication(), R.string.account_duplication, Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//        });
 
         pwd_edit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
@@ -135,7 +146,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener{
                 // TODO Auto-generated method stub
                 phoneVal = phoneNum_edit.getText().toString();
                 if (!hasFocus) {
-                    if (phoneVal.length() <11 || ClassPathResource.isMobileNO(phoneVal) == false)
+                    if (phoneVal.length() !=11)
                         Toast.makeText(getApplication(), R.string.phone_length, Toast.LENGTH_SHORT).show();
                 }
             }
@@ -165,6 +176,21 @@ public class RegisterActivity extends Activity implements View.OnClickListener{
             case R.id.btn_title_left:
                 RegisterActivity.this.finish();
                 break;
+            case R.id.btn_getCode:
+                phoneVal = phoneNum_edit.getText().toString().trim();
+                checkCodeVal=checkCode_edit.getText().toString().trim();
+                BmobSMS.requestSMSCode(this, phoneVal, "ShareWay", new RequestSMSCodeListener() {
+                    @Override
+                    public void done(Integer integer, BmobException e) {
+                        if (e == null) {
+                            Log.i("checkCodeSuccess:", "code" + integer);
+                        }
+                    }
+                });
+                break;
+
+
+
             case R.id.btn_reg:
                 nameVal = name_edit.getText().toString().trim();
                 accountVal = et_accountNo.getText().toString().trim();
@@ -172,12 +198,13 @@ public class RegisterActivity extends Activity implements View.OnClickListener{
                 phoneVal = phoneNum_edit.getText().toString().trim();
                 pwdVal = pwd_edit.getText().toString().trim();
                 pwdConfirmVal = pwdConfirm_edit.getText().toString().trim();
+                checkCodeVal=checkCode_edit.getText().toString().trim();
                 //genderVal = genderRb.getText().toString();
 
                 if(((RadioButton)rgroup.getChildAt(0)).isChecked() == true)
-                    genderVal = "male";
+                    genderVal = Boolean.TRUE;
                 else
-                    genderVal = "female";
+                    genderVal = Boolean.FALSE;
 
                 /*Map<String, String> register_map = new HashMap<String, String>();
                 register_map.put(BLConstants.ARG_USER_ID, accountVal);
@@ -187,7 +214,42 @@ public class RegisterActivity extends Activity implements View.OnClickListener{
                 register_map.put(BLConstants.ARG_USER_PHONE, phoneVal);
                 register_map.put(BLConstants.ARG_USER_EMAIL, emailVal);*/
 
-               Data.put(accountVal, pwdVal, nameVal, genderVal, phoneVal);
+             // Data.put(accountVal, pwdVal, nameVal, genderVal, phoneVal);
+
+                MyUser myUser =new MyUser();
+                myUser.setUsername(accountVal);
+                myUser.setPassword(pwdVal);
+                myUser.setNick(nameVal);
+                myUser.setSex(genderVal);
+                myUser.setMobilePhoneNumber(phoneVal);
+                myUser.setEmail(emailVal);
+                BmobSMS.verifySmsCode(this, phoneVal, checkCodeVal, new VerifySMSCodeListener() {
+                    @Override
+                    public void done(BmobException e) {
+                        if (e == null) {
+                            Toast.makeText(getApplication(),
+                                    "验证通过", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(getApplication(),
+                                    "验证失败" + e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+                myUser.signUp(this, new SaveListener() {
+                    @Override
+                    public void onSuccess() {
+                        Toast.makeText(getApplication(),
+                                R.string.register_success, Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onFailure(int i, String s) {
+                        Toast.makeText(getApplication(),
+                               "注册失败"+s, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
                 NavigationUtils.navigateToLoginActivity(RegisterActivity.this);
                // mComm.doVolleyPost(BLConstants.API_REGISTER, register_map, Communications.TAG_REGISTER);
 
