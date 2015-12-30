@@ -93,6 +93,9 @@
         <activity android:name=".activities.UserProfileActivity"
             android:finishOnTaskLaunch="true"
             />
+        <activity
+            android:name=".activities.InnerLocationActivity" >
+        </activity>
 
         <receiver android:name=".helpers.MediaButtonIntentReceiver" >
             <intent-filter>
