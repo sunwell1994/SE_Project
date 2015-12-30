@@ -21,4 +21,7 @@
     <item android:id="@+id/action_map" android:title="@string/action_map"
         android:orderInCategory="110" app:showAsAction="never" />
 
+    <item android:id="@+id/action_inner" android:title="@string/action_inner"
+        android:orderInCategory="110" app:showAsAction="never" />
+
 </menu>

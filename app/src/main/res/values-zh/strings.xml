@@ -4,6 +4,7 @@
 
     <string name="action_settings">设置</string>
     <string name="action_map">地图</string>
+    <string name="action_inner">室内</string>
     <string name="menu_sort_by">排序</string>
     <string name="sort_order_entry_az">A 到 Z</string>
     <string name="sort_order_entry_za">Z 到 A</string>

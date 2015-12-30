@@ -89,30 +89,6 @@ public class RegisterActivity extends Activity implements View.OnClickListener{
         pwdConfirm_edit = (EditText)findViewById(R.id.pwdConfirm_edit);
 
 
-//        et_accountNo.setOnFocusChangeListener(new View.OnFocusChangeListener(){
-//
-//            @Override
-//            public void onFocusChange(View view, boolean hasFocus) {
-//                // TODO Auto-generated method stub
-//                accountVal =et_accountNo.getText().toString();
-//                if (!hasFocus) {
-//                    boolean flag=false;
-//
-//                    for (int i =0; i< Data.getLength();i++)
-//                    {
-//                        if (accountVal.equals(Data.getUsername(i))){
-//                            flag =true;
-//                            break;
-//                        }
-//                    }
-//
-//                    if (flag)
-//                        Toast.makeText(getApplication(), R.string.account_duplication, Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//
-//        });
-
         pwd_edit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
 
@@ -152,20 +128,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener{
             }
         });
 
-        /*email_edit.setOnFocusChangeListener(new View.OnFocusChangeListener() {
 
-            @Override
-            public void onFocusChange(View view, boolean hasFocus) {
-                // TODO Auto-generated method stub
-                emailVal = email_edit.getText().toString();
-                if (!hasFocus) {
-                    if (emailVal.equals(""))
-                        Toast.makeText(getApplication(), R.string.email_tip, Toast.LENGTH_SHORT).show();
-                    else if (ClassPathResource.isEmail(emailVal) == false)
-                        Toast.makeText(getApplication(), R.string.email_format_error, Toast.LENGTH_SHORT).show();
-                }
-            }
-        });*/
     }
 
     @Override
@@ -184,6 +147,8 @@ public class RegisterActivity extends Activity implements View.OnClickListener{
                     public void done(Integer integer, BmobException e) {
                         if (e == null) {
                             Log.i("checkCodeSuccess:", "code" + integer);
+                            Toast.makeText(getApplication(),
+                                    "验证码已经发送到"+phoneVal, Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -206,15 +171,6 @@ public class RegisterActivity extends Activity implements View.OnClickListener{
                 else
                     genderVal = Boolean.FALSE;
 
-                /*Map<String, String> register_map = new HashMap<String, String>();
-                register_map.put(BLConstants.ARG_USER_ID, accountVal);
-                register_map.put(BLConstants.ARG_USER_PWD, pwdVal);
-                register_map.put(BLConstants.ARG_USER_NAME, nameVal);
-                register_map.put(BLConstants.ARG_USER_GENDER, genderVal);
-                register_map.put(BLConstants.ARG_USER_PHONE, phoneVal);
-                register_map.put(BLConstants.ARG_USER_EMAIL, emailVal);*/
-
-             // Data.put(accountVal, pwdVal, nameVal, genderVal, phoneVal);
 
                 MyUser myUser =new MyUser();
                 myUser.setUsername(accountVal);
@@ -251,17 +207,11 @@ public class RegisterActivity extends Activity implements View.OnClickListener{
 
 
                 NavigationUtils.navigateToLoginActivity(RegisterActivity.this);
-               // mComm.doVolleyPost(BLConstants.API_REGISTER, register_map, Communications.TAG_REGISTER);
+
 
                 break;
         }
     }
 
-   /* @Override
-    public void onSuccess(String tag, String response) {
-        if (tag.equals(Communications.TAG_REGISTER)) {
-            showNotification(BLConstants.MSG_REG_OK);
-        }
-    }*/
 
 }

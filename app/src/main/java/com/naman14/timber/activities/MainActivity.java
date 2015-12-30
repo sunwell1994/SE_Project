@@ -278,6 +278,9 @@ public class MainActivity extends BaseActivity {
             case R.id.action_map:
                 NavigationUtils.navigateToMap(this);
                 return true;
+            case R.id.action_inner:
+                NavigationUtils.navigateToInner(this);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }

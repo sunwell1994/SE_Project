@@ -24,6 +24,7 @@ import android.support.v4.app.Fragment;
 import android.util.Pair;
 
 import com.naman14.timber.MusicPlayer;
+import com.naman14.timber.activities.InnerLocationActivity;
 import com.naman14.timber.activities.LocationFilter;
 import com.naman14.timber.activities.LoginActivity;
 import com.naman14.timber.activities.MainActivity;
@@ -127,6 +128,14 @@ public class NavigationUtils {
      //   intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         intent.setAction(Constants.NAVIGATE_MAP);
         intent.putExtra("from", 0);
+        context.startActivity(intent);
+    }
+
+    //call for inner map
+    public static void navigateToInner(Activity context) {
+        final Intent intent = new Intent(context, InnerLocationActivity.class);
+        // intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        intent.setAction(Constants.NAVIGATE_INNER);
         context.startActivity(intent);
     }
 

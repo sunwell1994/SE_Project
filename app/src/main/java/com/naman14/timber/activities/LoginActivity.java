@@ -26,22 +26,14 @@ import cn.bmob.v3.listener.SaveListener;
 /**
  * Created by admin on 2015/12/16.
  */
-public class LoginActivity extends Activity /*implements View.OnClickListener*/{
+public class LoginActivity extends Activity {
     private static final String DEBUG_TAG = "LoginActivity";
-    private Button btn_login;
-    private Button btn_regist;
-    private Button btn_forget_pwd;
-    private EditText username_edit;
-   private EditText password_edit;
-    private CheckBox rem_pwd;
-   private String username = "";
-   private String password = "";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        Log.i("helllllllllllllllllllll", "LoginCreate! ");
+        Log.i(DEBUG_TAG, "LoginCreate! ");
 //
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.login);
